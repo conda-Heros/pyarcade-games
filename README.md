@@ -63,7 +63,6 @@ The Software requirements are mentioned with vision , scope , MVP and functional
 
 * Snake game : [link](https://www.edureka.co/blog/snake-game-with-pygame/)
 
-* Tic-Tac-Toe : [link](https://geekflare.com/tic-tac-toe-python-code/)
 # Technologies Used:
 * Python
 * Visual Studio Code 
