@@ -21,25 +21,21 @@ The list of games that we will have in Py Arcade games will be :
 
 > The player controls a dot, square, or object on a bordered plane. As it moves forward, it leaves a trail behind, resembling a moving snake. In some games, the end of the trail is in a fixed position, so the snake continually gets longer as it moves.
 
-* Tic-Tac-Toe
-
-> is a game in which two players take turns in drawing either an ' O' or an ' X' in one square of a grid consisting of nine squares. The winner is the first player to get three of the same symbols in a row
-
-### Special Idea
-
 * Pylearn
 
-A game for learning programming using Python, and to teach the user how to make his first program using python , and the user will have amazing instructor to teach him the basics of programming in general and specially in Python.
+> A game for learning programming using Python, and to teach the user how to make his first program using python , and the user will have amazing instructor to teach him the basics of programming in general and specially in Python.
 
 # Getting Started:
 
 Clone this repository to your local machine. [git@github.com: MusaabShalaldeh/automation.git]()
 
 Then, install all required dependencies by typing:
+
 ```bash
 poetry install
 poetry shell
 ```
+
 Load up the project using your favorite IDE.
 
 # User Stories
