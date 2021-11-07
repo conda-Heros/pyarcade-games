@@ -18,20 +18,22 @@ def display(msg,style):
     return result
 
 def main():
-    """
-    Main function for Runinng the game
-
-    Arg: 
-        No Argument
-    Return:
-        No return Value
-    """ 
-    display("     Covid-19 Quiz Game","small")	
-    print('Enter s to start the game, q to exit : ')
-    char=readchar.readchar()
-    if char== 's':
+	"""
+	Main function for Runinng the game
+	Arg: 
+	No Argument
+	Return:
+	No return Value
+	"""
+	display("     Covid-19 Quiz Game","small")	
+	print('Enter s to start the game, q to exit : ')
+	char=readchar.readchar()
+	if char== 's':
         # ------------------------- Play ------------------------------
-        display("     Quiz Game","small")
-        print("Welcome to the quiz game, we have 10 questions to answer and you will get your score at the end, Good Luck!")
-    else:
-        main()
+		display("     Quiz Game","small")
+		print("Welcome to the quiz game, we have 10 questions to answer and you will get your score at the end, Good Luck!")
+	elif char=='q':
+		sys.exit()
+	else:
+		main()
+		
