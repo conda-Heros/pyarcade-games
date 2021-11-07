@@ -5,6 +5,8 @@ from colorama import Fore, Style
 from PyInquirer import prompt
 import pyfiglet
 import sys
+import os
+
 
 
 def start_application():
@@ -28,6 +30,9 @@ def start_application():
             ],
         }
     ]
+    
+    # play Game Video
+    os.system('video-to-ascii -f dancing_man.mp4 --strategy filled-ascii')
 
     answer = prompt(question).get("game")
     if answer == "Hang Man":
@@ -49,6 +54,7 @@ def start_application():
 def quit_game():
     print(f"{Fore.RED} Quiting Game....")
     sys.exit()
+
     
 
 if __name__ == "__main__":
