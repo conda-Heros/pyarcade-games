@@ -12,6 +12,7 @@ colorama = "^0.4.4"
 readchar = "^3.0.4"
 pyfiglet = "^0.8.post1"
 PyInquirer = "^1.0.3"
+termcolor = "^1.1.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
