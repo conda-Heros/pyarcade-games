@@ -31,8 +31,8 @@ def start_application():
 
     answer = prompt(question).get("game")
     if answer == "Hang Man":
-        from pyarcade_games.hangman import main
-        main()
+        from pyarcade_games.hangman import start_hangman_game
+        start_hangman_game()
     elif answer == "Quiz Game":
         from pyarcade_games.quiz_game import main
         main()
