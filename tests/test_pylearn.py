@@ -25,3 +25,15 @@ def test_welcoming_to_game():
     actual=Greeting
     #assert
     assert actual == Greeting
+
+def test_lessons_and_questions_mode1():
+    # act
+    actual=len(lessons_and_questions_mode1())
+    expected=5
+    # assert
+    assert actual==expected
+
+def test_start_lessons_and_questions():
+    pass
+
+
