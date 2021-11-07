@@ -42,7 +42,14 @@ def start_application():
     elif answer == "Pylearn":
         from pyarcade_games.pylearn import main
         main()
+    elif answer == "Quit":
+        quit_game()
+        
 
+def quit_game():
+    print(f"{Fore.RED} Quiting Game....")
+    sys.exit()
+    
 
 if __name__ == "__main__":
     start_application()
