@@ -11,6 +11,7 @@ flake8 = "^4.0.1"
 colorama = "^0.4.4"
 readchar = "^3.0.4"
 pyfiglet = "^0.8.post1"
+PyInquirer = "^1.0.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
