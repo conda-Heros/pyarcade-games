@@ -1,4 +1,2 @@
-import sys
-
 def main():
-    sys.exit()
+    print("quiz game started!")

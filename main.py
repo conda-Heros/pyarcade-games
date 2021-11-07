@@ -4,6 +4,7 @@ Main Game Module
 from colorama import Fore, Style
 from PyInquirer import prompt
 import pyfiglet
+import sys
 
 
 def start_application():
@@ -29,7 +30,26 @@ def start_application():
     ]
 
     answer = prompt(question).get("game")
+    if answer == "Hang Man":
+        from pyarcade_games.hangman import main
+        main()
+    elif answer == "Quiz Game":
+        from pyarcade_games.quiz_game import main
+        main()
+    elif answer == "Snake":
+        from pyarcade_games.snake_game import main
+        main()
+    elif answer == "Pylearn":
+        from pyarcade_games.pylearn import main
+        main()
+    elif answer == "Quit":
+        quit_game()
+        
 
+def quit_game():
+    print(f"{Fore.RED} Quiting Game....")
+    sys.exit()
+    
 
 if __name__ == "__main__":
     start_application()
