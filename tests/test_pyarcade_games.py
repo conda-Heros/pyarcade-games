@@ -1,15 +1,18 @@
 from pyarcade_games import __version__
-from main import say_hi
+from main import start_application
 
 def test_version():
     assert __version__ == '0.1.0'
 
 
 
-def test_say_hi():
+def test_application_starts():
     # Arrange
-    expected = "Hi"
+    expected = True
+    
     # Actual
-    actual = say_hi()
-    # Assert
+    actual = False
+    if start_application:
+        actual = True
+
     assert actual == expected
