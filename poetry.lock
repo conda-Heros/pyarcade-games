@@ -291,7 +291,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "6f790a2a5b310cfcd0d2df47112417ebb99bcfb1708be97dec8682ab974de209"
+content-hash = "79fc8622439b833d09e0166bec15ebbba07f224c1ed944d4283de6cea86673c0"
 
 
 
