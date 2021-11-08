@@ -89,7 +89,18 @@ questions = [
 					'choices' : ['You stop going to crowded places and visiting other people’s houses','You stop talking to the people you live with','You stop speaking to your friends on the phone']
 				}
 			]
-
+correct_answers = [
+	'Through droplets that come from your mouth and nose when you cough or breathe out',
+	'No – not everyone with COVID-19 has symptoms',
+	'All of the above',
+	'No – people who adhere to antiretroviral treatment (ART) and have a high CD4 count aren’t more at risk',
+	'Older people – especially those aged 70 and above',
+	'No – but most people get better by themselves',
+	'Yes – normal soap and water or hand sanitizer is enough',
+	'All of the above',
+	'All of the above',
+	'You stop going to crowded places and visiting other people’s houses',
+]
 
 def get_answers():
     """
@@ -107,7 +118,13 @@ def get_answers():
     """
     answers = prompt(questions,style = style)
     return answers
-
+def get_score(solutions,user_solution):
+    
+    score = 0
+    for s,u in zip(solutions,user_solution):
+        if s == u:
+            score += 1
+	return score
 def display(msg,style):
     """
     Display function for ASCII art text generation 
@@ -124,23 +141,28 @@ def display(msg,style):
     return result
 
 def main():
-	"""
-	Main function for Runinng the game
-	Arg: 
-	No Argument
-	Return:
-	No return Value
-	"""
-	display("     Covid-19 Quiz Game","small")	
-	print('Enter s to start the game, q to exit : ')
-	char=readchar.readchar()
-	if char=='s':
-		# ------------------------- Play ------------------------------
-		display("     Quiz Game","small")
-		print("Welcome to the quiz game, we have 10 questions to answer and you will get your score at the end, Good Luck!")
-		userAnswers = get_answers()
-		time.sleep(1)
-	elif char=='q':
-		sys.exit()
-	else:
-		main()
+    """
+    Main function for Runinng the game
+    Arg: 
+    No Argument
+    Return:
+    No return Value
+    """
+    display("     Covid-19 Quiz Game","small")	
+    print('Enter s to start the game, q to exit : ')
+    char=readchar.readchar()
+    if char=='s':
+        # ------------------------- Play ------------------------------
+        display("     Quiz Game","small")
+        print("Welcome to the quiz game, we have 10 questions to answer and you will get your score at the end, Good Luck!")
+        userAnswers = get_answers()
+        time.sleep(1)
+        # -------------------------- Game End ------------------------------
+        user_answers = [j for j in userAnswers.values()]
+        score = get_score(correct_answers,user_answers)
+        display(f"Your Score : {score} of 10","small")
+        time.sleep(4)
+    elif char=='q':
+        sys.exit()
+    else:
+        main()
