@@ -9,57 +9,6 @@ from pyfiglet import figlet_format
 import tty
 import sys
 import termios
-# from playsound import playsound
-
-
-
-
-# Holds down the alt key
-# pyautogui.keyDown("alt")
-
-# # Presses the tab key once
-# pyautogui.press("tab")
-
-# # Lets go of the alt key
-# pyautogui.keyUp("alt")
-# from win32api import GetKeyState
-
-# def key_down(key):
-#    state = GetKeyState(key)
-# if (state != 0) and(state != 1):
-#    return True
-# else :
-#    return False
-
-# while True:
-#    print(key_down(0x31))
-
-# def on_press(key):
-#     try:
-#         print('alphanumeric key {0} pressed'.format(
-#             key.char))
-#     except AttributeError:
-#         print('special key {0} pressed'.format(
-#             key))
-
-# def on_release(key):
-#     print('{0} released'.format(
-#         key))
-#     if key == keyboard.Key.esc:
-#         # Stop listener
-#         return False
-
-# # Collect events until released
-# with keyboard.Listener(
-#         on_press=on_press,
-#         on_release=on_release) as listener:
-#     listener.join()
-
-# # ...or, in a non-blocking fashion:
-# listener = keyboard.Listener(
-#     on_press=on_press,
-#     on_release=on_release)
-# listener.start()
 
 
 def welcoming_picture_to_game():
