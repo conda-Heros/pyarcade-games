@@ -119,7 +119,16 @@ def get_answers():
     answers = prompt(questions,style = style)
     return answers
 def get_score(solutions,user_solution):
-    
+    """
+    Get score method for calculation of the mark of quiz
+
+    Arg:
+        solutions : array of strings for the correct answers 
+        user_solution : dictionary of objects that contain key value pairs 
+        of the question name and user answer
+    Return : 
+        score : Integer number from 0-9 for the score of game
+    """
     score = 0
     for s,u in zip(solutions,user_solution):
         if s == u:
