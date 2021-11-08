@@ -3,8 +3,63 @@ Pylearn Game
 """
 import time
 import os
+os.environ['DISPLAY'] = ':0'
 from termcolor import cprint 
 from pyfiglet import figlet_format
+import tty
+import sys
+import termios
+# from playsound import playsound
+
+
+
+
+# Holds down the alt key
+# pyautogui.keyDown("alt")
+
+# # Presses the tab key once
+# pyautogui.press("tab")
+
+# # Lets go of the alt key
+# pyautogui.keyUp("alt")
+# from win32api import GetKeyState
+
+# def key_down(key):
+#    state = GetKeyState(key)
+# if (state != 0) and(state != 1):
+#    return True
+# else :
+#    return False
+
+# while True:
+#    print(key_down(0x31))
+
+# def on_press(key):
+#     try:
+#         print('alphanumeric key {0} pressed'.format(
+#             key.char))
+#     except AttributeError:
+#         print('special key {0} pressed'.format(
+#             key))
+
+# def on_release(key):
+#     print('{0} released'.format(
+#         key))
+#     if key == keyboard.Key.esc:
+#         # Stop listener
+#         return False
+
+# # Collect events until released
+# with keyboard.Listener(
+#         on_press=on_press,
+#         on_release=on_release) as listener:
+#     listener.join()
+
+# # ...or, in a non-blocking fashion:
+# listener = keyboard.Listener(
+#     on_press=on_press,
+#     on_release=on_release)
+# listener.start()
 
 
 def welcoming_picture_to_game():
@@ -32,24 +87,27 @@ def welcoming_text_to_game():
     return(introduction)
 
 
-def countdown(t):
+
+
     
-    """A function to count the time remained for the lesson to end and to start the question
-    Argument=>None
-    Return=>string"""
-    
-    
-    while t:
-        # divide time to minitues and second
-        mins, secs = divmod(t, 60)
-        # update timer 
-        timer = '{:02d}:{:02d}'.format(mins, secs)
-        print(timer, end="\r")
-        # delay for 1 second
-        time.sleep(1)
-        t -= 1
-      
-    print('You are Out of Time!')
+def sense_user_input():
+    """
+    A function to sense the variation in the command line so that if the user press any key the user will be redirected to the next question
+    """
+
+    print("Press On any key to be directed to the questions.")
+
+    orig_settings = termios.tcgetattr(sys.stdin)
+
+    tty.setcbreak(sys.stdin)
+    x = 0
+
+    x=sys.stdin.read(1)[0]
+
+
+    termios.tcsetattr(sys.stdin, termios.TCSADRAIN, orig_settings)
+    return None
+
 def lessons_and_questions_mode1():
     """
     This function contain the whole lessons for mode1 for this game and all of the questions and the answers
@@ -134,14 +192,41 @@ def start_lessons_and_questions(lessons_and_questions_mode1):
 
 
     for num in range(len(lessons_questions_info)):
+        os.system('clear')
         # print instructor picture
         print(welcoming_picture_to_game())
         # print lessons
         print(lessons_questions_info[num][f'lesson{num}'])
-        countdown(20)
+        print('')
+        sense_user_input()
+        #starts calculating time from the following line
         os.system('clear')
+        start = time.time()
         print(lessons_questions_info[num][f'question{num}'])
         user_answer=input('> Answer: ')
+        # check for the time that the user took to answer
+        
+        while (time.time() - start) > 10:
+            os.system('clear')
+            # playsound('voicenote.mp3')
+            print("""Are you sure ?
+            A - Yes
+            B -No
+            """)
+            user_confirmation=input('> Answer:')
+            while user_confirmation.upper() != 'YES' and user_confirmation.upper() != 'NO':
+                print('Its a Yes or No question , Just answer with one of Them !')
+                user_confirmation=input('> Answer:')
+            if user_confirmation.upper() == 'YES':
+                break
+            else:
+                start = time.time()
+                print(lessons_questions_info[num][f'question{num}'])
+                user_answer=input('> Answer: ')
+                
+
+
+
         if user_answer.upper()==lessons_questions_info[num][f'answer{num}']:
             total_marks+=20
         else:
@@ -150,9 +235,23 @@ def start_lessons_and_questions(lessons_and_questions_mode1):
     'white', 'on_blue', attrs=['bold'])
 
 
+def before_user_start_game():
+    print('To start this game just Type in \'Go\' !')
+    user_select=input('> ')
+    while(user_select.upper() != 'GO'):
+        print('please type in \'Go\' to start !')
+        user_select=input('> ')
+    os.system('clear')
+    return ''
+    
+
+
+
+
 
 
 def main():
     print(welcoming_picture_to_game())
     print(welcoming_text_to_game())
+    print(before_user_start_game())
     print(start_lessons_and_questions(lessons_and_questions_mode1))
