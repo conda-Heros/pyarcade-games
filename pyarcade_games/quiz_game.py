@@ -3,6 +3,7 @@ from pyfiglet import Figlet
 import readchar
 import time
 import sys
+import os
 import readchar
 style = style_from_dict({
 	Token.Separator : '#fff',      #white
@@ -101,7 +102,11 @@ correct_answers = [
 	'All of the above',
 	'You stop going to crowded places and visiting other people’s houses',
 ]
-
+def clear_console():
+    command = 'clear'
+    if os.name in ('nt', 'dos'):
+        command = 'cls'
+    os.system(command)
 def get_answers():
     """
     Get Answers method for prompt user answers by showing questions in sequeance
@@ -148,30 +153,36 @@ def display(msg,style):
     result=f.renderText(msg)
     print(result)
     return result
-
 def main():
-    """
+	"""
     Main function for Runinng the game
     Arg: 
     No Argument
     Return:
     No return Value
     """
-    display("     Covid-19 Quiz Game","small")	
-    print('Enter s to start the game, q to exit : ')
-    char=readchar.readchar()
-    if char=='s':
-        # ------------------------- Play ------------------------------
-        display("     Quiz Game","small")
-        print("Welcome to the quiz game, we have 10 questions to answer and you will get your score at the end, Good Luck!")
-        userAnswers = get_answers()
-        time.sleep(1)
-        # -------------------------- Game End ------------------------------
-        user_answers = [j for j in userAnswers.values()]
-        score = get_score(correct_answers,user_answers)
-        display(f"Your Score : {score} of 10","small")
-        time.sleep(4)
-    elif char=='q':
-        sys.exit()
-    else:
-        main()
+	display("     Covid-19 Quiz Game","small")	
+	print('Enter s to start the game, q to exit : ')
+	char=readchar.readchar()
+	if char=='s':
+		# ------------------------- Play ------------------------------
+		display("     Quiz Game","small")
+		print("Welcome to the quiz game, we have 10 questions to answer and you will get your score at the end, Good Luck!")
+		clear_console()
+		userAnswers = get_answers()
+		time.sleep(1)
+		# -------------------------- Game End ------------------------------
+		user_answers = [j for j in userAnswers.values()]
+		score = get_score(correct_answers,user_answers)
+		clear_console()
+		display(f"Your Score : {score} of 10","small")
+		time.sleep(3)
+		print("Back to main menu..")
+		time.sleep(2)
+		clear_console()
+		command = 'python -m main'
+		os.system(command)
+	elif char=='q':
+		sys.exit()
+	else:
+		main()
