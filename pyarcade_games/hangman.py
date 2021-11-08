@@ -45,7 +45,7 @@ f'''{Fore.YELLOW}
       |
 ========={Fore.RESET}
 ''', 
-f'''{Fore.RED}{Style.DIM}
+f'''{Fore.RED}
   +---+
   |   |
   O   |
@@ -97,10 +97,20 @@ def start_hangman_game(tries=default_tries, word=words_bank[random.randint(0,len
     print(f"3: If you input a wrong letter, then the hangman state will update and you will lose 1 try ")
 
     modified_word = list(underscorify_word(word))
-    print(modified_word)
-    print(word)
 
     while number_of_tries > 0:
+        if "".join(modified_word).strip() == word.strip():
+          clear_console()
+          win_message = Fore.GREEN + Style.BRIGHT + pyfiglet.figlet_format("Congratz")
+          print(win_message)
+          print(f"{Fore.RESET}You have sucessfully guessed the word!")
+          score = f"Beaten the game with only {(tries-number_of_tries)+1} try(s)"
+          print(f"Score: {score}")
+          print("------------------------------------------------")
+          print("------------------------------------------------")
+          replay_or_quit()
+
+        
         print(f"{Fore.RESET}Word is made of {len(word.strip())} letters")
         print(" ","".join(modified_word))
 
@@ -117,8 +127,32 @@ def start_hangman_game(tries=default_tries, word=words_bank[random.randint(0,len
           number_of_tries -= 1
           hangman_state += 1
         print(Fore.RESET + hangman_states[hangman_state])
+
+    clear_console()
+    fail_message = Fore.RED + Style.BRIGHT + pyfiglet.figlet_format("FAILED!")
+    print(fail_message)
+    print(f"{Fore.RESET}You ran out of tries {Fore.RED}{Style.BRIGHT}:({Fore.RESET}")
+    print("------------------------------------------------")
+    print("------------------------------------------------")
+    replay_or_quit()
+      
           
 
+def replay_or_quit():
+  """Prompts the user with input asking if they should play again or not.
+  Args:
+    None
+  Returns:
+    None
+  """
+  _input = input("Would you like to play again ?(Y/N)").upper()
+  if _input == "Y":
+    start_hangman_game(6,words_bank[random.randint(0,len(words_bank)-1)])
+    return
+  else:
+    from main import start_application
+    clear_console()
+    start_application()
 
 
 def check_if_char_in_word(char: str,word: str):
