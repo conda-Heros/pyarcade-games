@@ -211,6 +211,7 @@ lock-version = "1.1"
 python-versions = "^3.9"
 content-hash = "e09c200193c8a386365a9a24236dc9bd1cdd056482439976df32db6fc605d539"
 
+
 [metadata.files]
 black = [
     {file = "black-21.10b0-py3-none-any.whl", hash = "sha256:6eb7448da9143ee65b856a5f3676b7dda98ad9abe0f87fce8c59291f15e82a5b"},
