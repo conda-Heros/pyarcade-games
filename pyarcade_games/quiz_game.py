@@ -133,7 +133,7 @@ def get_score(solutions,user_solution):
     for s,u in zip(solutions,user_solution):
         if s == u:
             score += 1
-	return score
+    return score
 def display(msg,style):
     """
     Display function for ASCII art text generation 
