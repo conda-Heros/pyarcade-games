@@ -27,13 +27,12 @@ The list of games that we will have in Py Arcade games will be :
 
 # Getting Started:
 
-Clone this repository to your local machine. [git@github.com:conda-Heros/pyarcade-games.git]()
+Clone this repository to your local machine. [https://github.com/conda-Heros/pyarcade-games.git]()
 
 Then, install all required dependencies by typing:
 
 ```bash
-poetry install
-poetry shell
+python setup.py
 ```
 
 Load up the project using your favorite IDE.

@@ -1,4 +1,5 @@
-from PyInquirer import style_from_dict, prompt,Token
+from PyInquirer import style_from_dict, Token
+from PyInquirer.prompt import prompt
 from pyfiglet import Figlet
 import readchar
 import time
