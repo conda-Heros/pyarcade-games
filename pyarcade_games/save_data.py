@@ -14,6 +14,9 @@ def save_data(variable_name: str, value):
     """
     if not os.path.exists("games_data"):
         os.makedirs("games_data")
+        init_path = "games_data/__init__.py"
+        with open(init_path, "a+") as init:
+            init.write(f"__version__ = '0.1.0'")
 
     file_path = "games_data/saves.py"
     with open(file_path, "a+") as saves_data:
