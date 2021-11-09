@@ -95,7 +95,12 @@ def start_hangman_game(tries=default_tries, word=words_bank[random.randint(0,len
     print(f"1: You have {tries} tries to guess the correct letters of a randomized word")
     print(f"2: If you input a correct letter, the Hangman will stay in his current state without losing any of the tries you have.")
     print(f"3: If you input a wrong letter, then the hangman state will update and you will lose 1 try ")
-
+    
+    random_num = random.randint(1,2)
+    if random_num == 1:
+      print(f"{Fore.RESET}Hint: the word ends with {word.strip()[-1]}")
+    else:
+      print(f"{Fore.RESET}Hint: the word starts with {word[0]}")
     modified_word = list(underscorify_word(word))
 
     while number_of_tries > 0:
@@ -126,6 +131,7 @@ def start_hangman_game(tries=default_tries, word=words_bank[random.randint(0,len
         else:
           number_of_tries -= 1
           hangman_state += 1
+        clear_console()
         print(Fore.RESET + hangman_states[hangman_state])
 
     clear_console()
