@@ -177,8 +177,8 @@ def check_if_char_in_word(char: str,word: str):
 
 
 def underscorify_word(word: str):
-  """Turn word letters into underscores and make spaces between them
-    e.g (word) => (_ _ _ _)
+  """Turn word letters into underscores
+    e.g (word) => (____)
 
   Args:
       word ([str]): [word to be underscorified]
