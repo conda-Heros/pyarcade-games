@@ -7,6 +7,7 @@ import random
 import pyfiglet
 import os
 import string
+from save_data import save_data
 default_tries = 6
 hangman_states = [
 f'''{Fore.GREEN}{Style.BRIGHT}
@@ -110,6 +111,7 @@ def start_hangman_game(tries=default_tries, word=words_bank[random.randint(0,len
           print(win_message)
           print(f"{Fore.RESET}You have sucessfully guessed the word!")
           score = f"Beaten the game with only {(tries-number_of_tries)+1} try(s)"
+          save_data("hangman_score",score)
           print(f"Score: {score}")
           print("------------------------------------------------")
           print("------------------------------------------------")
