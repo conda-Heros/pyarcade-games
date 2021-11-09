@@ -69,10 +69,6 @@ def welcoming_text_to_game():
 def sense_user_input():
     """
     A function to sense the variation in the command line so that if the user press any key the user will be redirected to the next question
-
-    arguments:
-    input->none
-    output->''
     """
 
     print("Press On any key to be directed to the questions.")
@@ -90,13 +86,6 @@ def sense_user_input():
 
 
 def compare_user_question_with_expected_words(user_question):
-    """
-    function responsible for checking the difference between the user input and the expected lessons and their keywords , so that if the user enters any thing not related to the topics discussed in the lesson , it will not allow him until he insert the a correct topic to discuss
-
-    arguments:
-    input->string
-    output->string
-    """
     counter=0
     key_words1=['I WANT TO ASK','I WOULD LIKE TO ASK','I WANT TO ASK YOU','CAN I ASK YOU','I WANT TO ASK ABOUT','CAN I ASK ABOUT','CAN I ASK']
 
@@ -139,8 +128,44 @@ def user_ask_instructor(indicator):
     input->nothing
     output-> more explanation about specific lesson
     """
-    
-    more_explanation_lesson=extra_lessons()
+    more_explanation_lesson={
+
+    'LESSON0':""" lesson 1 - Programming - Extra information:
+    Computer programming is the process of designing and building an executable computer program to accomplish a specific computing result or to perform a specific task. Programming involves tasks such as: analysis, generating algorithms, profiling algorithms' accuracy and resource consumption, and the implementation of algorithms in a chosen programming language (commonly referred to as coding).[1][2] The source code of a program is written in one or more languages that are intelligible to programmers, rather than machine code, which is directly executed by the central processing unit. The purpose of programming is to find a sequence of instructions that will automate the performance of a task (which can be as complex as an operating system) on a computer, often for solving a given problem. Proficient programming thus often requires expertise in several different subjects, including knowledge of the application domain, specialized algorithms, and formal logic.""" 
+
+    ,'LESSON1':"""lesson 2 - print() - Extra information:
+    The print() function prints the specified message to the screen, or other standard output device.
+
+    The message can be a string, or any other object, the object will be converted into a string before written to the screen.""" 
+
+
+    ,'LESSON2': """lesson 3 - Escape Characters -  Extra information:
+    To insert characters that are illegal in a string, use an escape character.
+
+    An escape character is a backslash \ followed by the character you want to insert.
+
+    An example of an illegal character is a double quote inside a string that is surrounded by double quotes:
+    Example
+    You will get an error if you use double quotes inside a string that is surrounded by double quotes:
+    txt = "We are the so-called "Vikings" from the north." """,
+
+
+    'LESSON3':"""lesson 4 - variables - Extra information:
+    A Python variable is a reserved memory location to store values. In other words, a
+    variable in a python program gives data to the computer for processing.
+    Every value in Python has a datatype. Different data types in Python are Numbers,
+    List, Tuple, Strings, Dictionary, etc. Variables can be declared by any name or even
+    alphabets like a, aa, abc, etc
+    Example
+    any_thing= 'hello' """ ,
+
+
+    'LESSON4':"""lesson 5 - input() - Extra information:
+    The Python input() and raw_input() functions are used to collect user input. input() has replaced raw_input() in Python 3 and onward. Both functions return a user input as a string.
+    For example, you may want to ask a user their age so you can determine whether they should be allowed to use your site. Or you may want to ask a user to input their name so you can determine its length. Whatever data you need from a user, you’ll need to find a way to get it in some fashion.
+
+    That’s where the Python input() function comes in. Input(), a built-in function in Python, allows coders to receive information through the keyboard, which they can process in a Python program. In this tutorial, we are going to break down the basics of Python input()."""}
+
     key_words1=['I WANT TO ASK','I WOULD LIKE TO ASK','I WANT TO ASK YOU','CAN I ASK YOU','I WANT TO ASK ABOUT','CAN I ASK ABOUT','CAN I ASK']
 
     key_words_for_lesson0=['PROGRAMMING','PYTHON','LESSON1','LESSON 1']
@@ -244,58 +269,7 @@ def user_ask_instructor(indicator):
         pass
     else:
         print('')
-
-
  
-def extra_lessons():
-    """
-    This function contains a dictionary that hold on all of the extra lessons in casse the user want to ask the instructor about specific question
-    
-    arguments:
-    input->none
-    Output->dictionary
-    """
-    more_explanation_lesson={
-
-    'LESSON0':""" lesson 1 - Programming - Extra information:
-    Computer programming is the process of designing and building an executable computer program to accomplish a specific computing result or to perform a specific task. Programming involves tasks such as: analysis, generating algorithms, profiling algorithms' accuracy and resource consumption, and the implementation of algorithms in a chosen programming language (commonly referred to as coding).[1][2] The source code of a program is written in one or more languages that are intelligible to programmers, rather than machine code, which is directly executed by the central processing unit. The purpose of programming is to find a sequence of instructions that will automate the performance of a task (which can be as complex as an operating system) on a computer, often for solving a given problem. Proficient programming thus often requires expertise in several different subjects, including knowledge of the application domain, specialized algorithms, and formal logic.""" 
-
-    ,'LESSON1':"""lesson 2 - print() - Extra information:
-    The print() function prints the specified message to the screen, or other standard output device.
-
-    The message can be a string, or any other object, the object will be converted into a string before written to the screen.""" 
-
-
-    ,'LESSON2': """lesson 3 - Escape Characters -  Extra information:
-    To insert characters that are illegal in a string, use an escape character.
-
-    An escape character is a backslash \ followed by the character you want to insert.
-
-    An example of an illegal character is a double quote inside a string that is surrounded by double quotes:
-    Example
-    You will get an error if you use double quotes inside a string that is surrounded by double quotes:
-    txt = "We are the so-called "Vikings" from the north." """,
-
-
-    'LESSON3':"""lesson 4 - variables - Extra information:
-    A Python variable is a reserved memory location to store values. In other words, a
-    variable in a python program gives data to the computer for processing.
-    Every value in Python has a datatype. Different data types in Python are Numbers,
-    List, Tuple, Strings, Dictionary, etc. Variables can be declared by any name or even
-    alphabets like a, aa, abc, etc
-    Example
-    any_thing= 'hello' """ ,
-
-
-    'LESSON4':"""lesson 5 - input() - Extra information:
-    The Python input() and raw_input() functions are used to collect user input. input() has replaced raw_input() in Python 3 and onward. Both functions return a user input as a string.
-    For example, you may want to ask a user their age so you can determine whether they should be allowed to use your site. Or you may want to ask a user to input their name so you can determine its length. Whatever data you need from a user, you’ll need to find a way to get it in some fashion.
-
-    That’s where the Python input() function comes in. Input(), a built-in function in Python, allows coders to receive information through the keyboard, which they can process in a Python program. In this tutorial, we are going to break down the basics of Python input()."""}
-    return more_explanation_lesson
-
-
-
 
 def lessons_and_questions_mode1():
     """
@@ -381,13 +355,6 @@ The input function prompts the user for input, and returns what they enter as a 
 
 
 def start_lessons_and_questions(lessons_and_questions_mode1):
-    """
-    function to start lessons from the instructor and give question after every lesson , the function takes in array of objects that contains all lessons and questions , it return asci art sentece that gives the user his total marks of the questions that he answered
-
-    argumnets:
-    input->array of objects
-    output->asci-art 
-    """
     
     lessons_questions_info=lessons_and_questions_mode1()
 
@@ -445,13 +412,6 @@ def start_lessons_and_questions(lessons_and_questions_mode1):
 
 
 def before_user_start_game():
-    """
-    a function that gives the user the choice to start the game by entering go
-
-    arguments
-    input->none
-    output->''
-    """
     print('To start this game just Type in \'Go\' !')
     user_select=input('> ')
     while(user_select.upper() != 'GO'):
