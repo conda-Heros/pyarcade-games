@@ -2,7 +2,7 @@
 Main Game Module
 """
 from colorama import Fore, Style
-from PyInquirer import prompt
+from PyInquirer.prompt import prompt
 import pyfiglet
 import sys
 import os
