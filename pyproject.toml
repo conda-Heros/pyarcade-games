@@ -5,7 +5,7 @@ description = ""
 authors = ["Jehad Abu Awwad <jehadabuawwad@outlook.com>"]
 
 [tool.poetry.dependencies]
-python = "3.9.5"
+python = "^3.9.5"
 black = "^21.10b0"
 flake8 = "^4.0.1"
 readchar = "^3.0.4"
