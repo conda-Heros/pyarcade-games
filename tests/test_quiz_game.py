@@ -1,6 +1,11 @@
 """
 Quiz Game Tests
 """
+import textwrap
+from assets.helpers import keys
+from assets.helpers import create_example_fixture
+from pyarcade_games.quiz_game import *
+example_app = create_example_fixture('assets/answers_mock.py')
 from pyarcade_games.quiz_game import *
 
 def test_display():
@@ -62,3 +67,14 @@ def test_get_score_sad_path():
     actual=get_score(correct_answers,user_answers)
     expected=0
     assert actual==expected
+
+
+def test_get_answers(example_app):
+    example_app.expect(textwrap.dedent("""\
+        ? 1. How is COVID-19 passed on?  (Use arrow keys)
+         ❯ In sexual fluids, including semen, vaginal fluids or anal mucous
+           By drinking unclean water
+           Through droplets that come from your mouth and nose when you cough or breathe
+           All of the above"""))
+    example_app.write(keys.ENTER)
+    
