@@ -138,6 +138,7 @@ def start_hangman_game(tries=default_tries, word=words_bank[random.randint(0,len
     fail_message = Fore.RED + Style.BRIGHT + pyfiglet.figlet_format("FAILED!")
     print(fail_message)
     print(f"{Fore.RESET}You ran out of tries {Fore.RED}{Style.BRIGHT}:({Fore.RESET}")
+    print(f"Correct word was {Fore.RED}{word.strip()}{Fore.RESET}")
     print("------------------------------------------------")
     print("------------------------------------------------")
     replay_or_quit()
