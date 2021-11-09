@@ -1,0 +1,1 @@
+from pyarcade_games.snake_game import main
