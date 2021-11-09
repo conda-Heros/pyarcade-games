@@ -30,9 +30,11 @@ def start_application():
             ],
         }
     ]
-    
     # play Game Video
-    os.system('video-to-ascii -f dancing_man.mp4 --strategy filled-ascii')
+    from video_to_ascii.cli import top
+    top('assets/dancing_man.mp4','filled-ascii')
+    # play Game Video
+    
 
     answer = prompt(question).get("game")
     if answer == "Hang Man":

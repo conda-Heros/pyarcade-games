@@ -27,6 +27,7 @@ bumpversion = ">=0.5.3"
 pypandoc = ">=1.3.3"
 safety = ">=1.8.5"
 colorama = "^0.4.4"
+xtermcolor = "^1.3"
 
 [tool.poetry.dev-dependencies]
 

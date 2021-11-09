@@ -1,6 +1,7 @@
 """
 Pylearn Game
 """
+from video_to_ascii.cli import top
 import time
 import os
 from termcolor import cprint 
@@ -184,7 +185,7 @@ def user_ask_instructor(indicator):
     os.system('clear')
     print('         I think now its a good time to take questions from you ...       ')
     time.sleep(2)
-    os.system('video-to-ascii -f participation.mp4 --strategy filled-ascii')
+    top('assets/participation.mp4','filled-ascii')
     os.system('clear')
     print("""       Do You Have any Questions   ?
             A -Yes
@@ -378,7 +379,7 @@ def start_lessons_and_questions(lessons_and_questions_mode1):
         user_answer=input('> Answer: ')
         # check for the time that the user took to answer
         
-        while (time.time() - start) > 10:
+        while (time.time() - start) > 3:
             os.system('clear')
             questions_time_indicator+=1
             print("""Are you sure ?
@@ -429,7 +430,7 @@ def before_user_start_game():
 def main():
     print(first_game_message())
     time.sleep(2)
-    print(welcoming_picture_to_game())
+    print(Fore.RESET + welcoming_picture_to_game()  )
     print(welcoming_text_to_game())
     print(before_user_start_game())
     print(start_lessons_and_questions(lessons_and_questions_mode1))
