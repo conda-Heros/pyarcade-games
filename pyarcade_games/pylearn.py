@@ -185,6 +185,7 @@ def user_ask_instructor(indicator):
     os.system('clear')
     print('         I think now its a good time to take questions from you ...       ')
     time.sleep(2)
+    print(Fore.RESET +'')
     top('assets/participation.mp4','filled-ascii')
     os.system('clear')
     print("""       Do You Have any Questions   ?
@@ -366,7 +367,7 @@ def start_lessons_and_questions(lessons_and_questions_mode1):
     for num in range(len(lessons_questions_info)):
         os.system('clear')
         # print instructor picture
-        print(welcoming_picture_to_game())
+        print(Fore.RESET +welcoming_picture_to_game())
         # print lessons
         print(lessons_questions_info[num][f'lesson{num}'])
         print('')
@@ -379,7 +380,7 @@ def start_lessons_and_questions(lessons_and_questions_mode1):
         user_answer=input('> Answer: ')
         # check for the time that the user took to answer
         
-        while (time.time() - start) > 3:
+        while (time.time() - start) > 5:
             os.system('clear')
             questions_time_indicator+=1
             print("""Are you sure ?
@@ -420,7 +421,7 @@ def start_lessons_and_questions(lessons_and_questions_mode1):
     elif user_repeat_or_close_the_game.upper() == 'Q':
         from main import start_application
         os.system('clear')
-        quit()
+        os.system('exit')
 
 
 
@@ -445,4 +446,4 @@ def main():
     print(Fore.RESET + welcoming_picture_to_game()  )
     print(welcoming_text_to_game())
     print(before_user_start_game())
-    print(start_lessons_and_questions(lessons_and_questions_mode1))
+    return(start_lessons_and_questions(lessons_and_questions_mode1))
