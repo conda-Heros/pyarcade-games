@@ -6,6 +6,7 @@ import time
 import sys
 import os
 import readchar
+from pyarcade_games.save_data import save_data, retrive_value
 style = style_from_dict({
 	Token.Separator : '#fff',      #white
 	Token.QuestionMark : '#000',   #black
@@ -175,6 +176,11 @@ def main():
 		# -------------------------- Game End ------------------------------
 		user_answers = [j for j in userAnswers.values()]
 		score = get_score(correct_answers,user_answers)
+		existing_score = retrive_value("quizgame_score")
+		if existing_score and existing_score > score:
+			pass
+		else:
+			save_data("quizgame_score",score)
 		clear_console()
 		display(f"Your Score : {score} of 10","small")
 		time.sleep(3)
