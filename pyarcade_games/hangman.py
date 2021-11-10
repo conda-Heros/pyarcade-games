@@ -7,6 +7,7 @@ import random
 import pyfiglet
 import os
 import string
+from pyarcade_games.save_data import save_data, retrive_value
 default_tries = 6
 hangman_states = [
 f'''{Fore.GREEN}{Style.BRIGHT}
@@ -109,8 +110,15 @@ def start_hangman_game(tries=default_tries, word=words_bank[random.randint(0,len
           win_message = Fore.GREEN + Style.BRIGHT + pyfiglet.figlet_format("Congratz")
           print(win_message)
           print(f"{Fore.RESET}You have sucessfully guessed the word!")
-          score = f"Beaten the game with only {(tries-number_of_tries)+1} try(s)"
-          print(f"Score: {score}")
+          score = (tries-number_of_tries)+1
+          
+          existing_score = retrive_value("hangman_score")
+          if existing_score and existing_score < score:
+            pass
+          else:
+            save_data("hangman_score",score)
+          
+          print(f"Score: Beaten the game with only {(tries-number_of_tries)+1} try(s)")
           print("------------------------------------------------")
           print("------------------------------------------------")
           replay_or_quit()

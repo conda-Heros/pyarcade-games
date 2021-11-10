@@ -8,6 +8,8 @@ import random
 from colorama import Fore,  Style
 import pyfiglet
 import os
+from pyarcade_games.save_data import save_data, retrive_value
+import readchar
 
 
 
@@ -157,20 +159,27 @@ def main():
     Lose_meassage = Fore.RED+ Style.BRIGHT + pyfiglet.figlet_format("You Lose ")
 
     score_meassage = Fore.BLUE+ Style.BRIGHT + pyfiglet.figlet_format(f"Score : {score} ")
+    existing_score = retrive_value("snake_score")
+    if existing_score and existing_score > score:
+        pass
+    else:
+        save_data("snake_score",score)
     print(Lose_meassage)
     print( score_meassage)
 
-
+    clear_console()
     #ask the user if he would to play again
-
-    user_input = input('Try again ?')
-    if user_input == 'yes' or user_input=='y':
+    
+    print('You lose the game Try again ? y for yes and n for no..')
+    char=readchar.readchar()
+    if char == 'y':
         # from hangman import clear_console
         clear_console()
         main()
     else :
         from main import start_application
         clear_console()
+        print("Back to main menu..")
         start_application()    
         
 

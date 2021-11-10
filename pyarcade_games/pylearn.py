@@ -9,8 +9,15 @@ from pyfiglet import figlet_format
 import tty
 import sys
 import termios
+from pyarcade_games.save_data import save_data, retrive_value
+
 from colorama import Fore, Style
 
+def clear_console():
+    command = 'clear'
+    if os.name in ('nt', 'dos'):
+        command = 'cls'
+    os.system(command)
 
 def first_game_message():
     """
@@ -422,6 +429,13 @@ def start_lessons_and_questions(lessons_and_questions_mode1):
         from main import start_application
         os.system('clear')
         os.system('exit')
+    existing_score = retrive_value("pylearn_score")
+    if existing_score and existing_score > total_marks:
+        pass
+    else:
+        save_data("pylearn_score",total_marks)
+    return cprint(figlet_format(f'Your Total marks is : {total_marks}  Out of 100', font='doom'),
+    'white', 'on_blue', attrs=['bold'])
 
 
 
@@ -441,6 +455,7 @@ def before_user_start_game():
 
 
 def main():
+    clear_console()
     print(first_game_message())
     time.sleep(2)
     print(Fore.RESET + welcoming_picture_to_game()  )
