@@ -22,12 +22,16 @@ def view_scores():
     quizgame_score = retrive_value("quizgame_score")
     snake_score = retrive_value("snake_score")
     pylearn_score = retrive_value("pylearn_score")
-    print(f"{Fore.RESET}Hangman: {Fore.BLUE}{hangman_score}")
-    print(f"{Fore.RESET}Quiz Game: {Fore.BLUE}{quizgame_score}")
-    print(f"{Fore.RESET}Snake Game: {Fore.BLUE}{snake_score}")
-    print(f"{Fore.RESET}PyLearn Game: {Fore.BLUE}{pylearn_score}")
+    print(f"{Fore.RESET}Hangman: {Fore.BLUE}{hangman_score if hangman_score else 'To Be Achieved'}")
+    print(f"{Fore.RESET}Quiz Game: {Fore.BLUE}{quizgame_score if quizgame_score else 'To Be Achieved'}")
+    print(f"{Fore.RESET}Snake Game: {Fore.BLUE}{snake_score if snake_score else 'To Be Achieved'}")
+    print(f"{Fore.RESET}PyLearn Game: {Fore.BLUE}{pylearn_score if pylearn_score else 'To Be Achieved'}")
 
-    print(f"{Fore.CYAN}Press any key to go back to the main menu.")
+    user_input = input(f"{Fore.CYAN}Press any key to go back to the main menu:")
+    if user_input:
+        clear_console()
+        from main import start_application
+        start_application()
     
 
 
