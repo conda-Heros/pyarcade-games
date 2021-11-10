@@ -408,8 +408,20 @@ def start_lessons_and_questions(lessons_and_questions_mode1):
             total_marks+=20
         else:
             pass
-    return cprint(figlet_format(f'Your Total marks is : {total_marks}  Out of 100', font='doom'),
-    'white', 'on_blue', attrs=['bold'])
+    print( cprint(figlet_format(f'Your Total marks is : {total_marks}  Out of 100', font='doom'),
+    'white', 'on_blue', attrs=['bold']) ) 
+    print('')
+    user_repeat_or_close_the_game=input('If you want to play again press Y if you want to quit press Q  >')
+    while user_repeat_or_close_the_game.upper() != 'Y' and user_repeat_or_close_the_game.upper() != 'Q':
+        print('You can answer only by Y or Q !!')
+        user_repeat_or_close_the_game=input('>')
+    if user_repeat_or_close_the_game.upper() == 'Y':
+        main()
+    elif user_repeat_or_close_the_game.upper() == 'Q':
+        from main import start_application
+        os.system('clear')
+        quit()
+
 
 
 def before_user_start_game():
