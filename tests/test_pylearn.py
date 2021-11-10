@@ -48,7 +48,7 @@ def test_lessons_and_questions_mode1():
     # assert
     assert actual==expected
 
-# @pytest.mark.skip("todo")
+@pytest.mark.skip("todo")
 def test_main_method():
     diffs = diff(main(), path="assets/scenario/senario1.txt")
     assert not diffs, diffs
