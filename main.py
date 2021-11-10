@@ -3,18 +3,21 @@ Main Game Module
 """
 from colorama import Fore, Style
 from PyInquirer.prompt import prompt
-import pyfiglet
 import sys
 import os
+import pyfiglet
 
-
+def clear_console():
+    command = 'clear'
+    if os.name in ('nt', 'dos'):
+        command = 'cls'
+    os.system(command)
 
 def start_application():
     """
     Application Start Method
     """
-    start_message = Fore.CYAN + Style.BRIGHT + pyfiglet.figlet_format("PyArcade Games")
-    print(start_message)
+    
     question = [
         {
             "type": "list",
@@ -31,9 +34,16 @@ def start_application():
         }
     ]
     
+    
     # play Game Video
-    os.system('video-to-ascii -f dancing_man.mp4 --strategy filled-ascii')
+    from video_to_ascii.cli import top
+    top('assets/dancing_man.mp4','filled-ascii')
+    # play Game Video
+    clear_console()
+    
+    print(Fore.CYAN + Style.BRIGHT + pyfiglet.figlet_format("PyArcade Games"))
 
+    
     answer = prompt(question).get("game")
     if answer == "Hang Man":
         from pyarcade_games.hangman import start_hangman_game
