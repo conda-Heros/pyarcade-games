@@ -20,6 +20,7 @@ def test_save_data_stromg():
     expected = "I am a lovely string"
     # Actual
     actual = retrive_value("dummy_string_variable")
+    print(actual)
     # Assert
     assert actual == expected
 
@@ -31,3 +32,9 @@ def test_save_data_retrieve_non():
     actual = retrive_value("non_existant_value")
     # Assert
     assert actual == expected
+
+
+
+
+if __name__=="__main__":
+    test_save_data_stromg()
