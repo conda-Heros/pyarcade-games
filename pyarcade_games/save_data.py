@@ -26,7 +26,15 @@ def save_data(variable_name: str, value):
             saves_data.write(f"{variable_name} = {value}\n")
 
 
-        
+def retrive_value(variable_name):
+    value = None
+    try:
+        import games_data.saves as saves
+        value = getattr(saves, variable_name)
+    except:
+        pass
+    return value
+
 
 
 if __name__ == "__main__":
