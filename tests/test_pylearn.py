@@ -1,6 +1,6 @@
 from pyarcade_games.pylearn import *
 def test_welcoming_picture_to_game():
-
+    
     # arrange
     with open('pic.txt',mode='r') as file:
         content=file.read()
