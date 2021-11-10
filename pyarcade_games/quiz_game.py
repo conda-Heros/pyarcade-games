@@ -184,12 +184,16 @@ def main():
 		clear_console()
 		display(f"Your Score : {score} of 10","small")
 		time.sleep(3)
-		print("Back to main menu..")
-		time.sleep(2)
-		clear_console()
-		command = 'python -m main'
-		os.system(command)
+		print("Do you want to back main menu (b) or exit (e)")
+		char2=readchar.readchar()
+		if char2=='b': 
+			print("Back to main menu..")
+			time.sleep(2)
+			command = 'python -m main'
+			os.system(command)
+		elif char2=='e':
+			print("Quit from game..")
+			time.sleep(1)
+			os.system('exit')
 	elif char=='q':
-		sys.exit()
-	else:
-		main()
+		os.system('exit')
