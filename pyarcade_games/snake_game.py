@@ -9,6 +9,8 @@ from colorama import Fore,  Style
 import pyfiglet
 import os
 from pyarcade_games.save_data import save_data, retrive_value
+import readchar
+
 
 
 
@@ -165,17 +167,19 @@ def main():
     print(Lose_meassage)
     print( score_meassage)
 
-
+    clear_console()
     #ask the user if he would to play again
-
-    user_input = input('Try again ?')
-    if user_input == 'yes' or user_input=='y':
+    
+    print('You lose the game Try again ? y for yes and n for no..')
+    char=readchar.readchar()
+    if char == 'y':
         # from hangman import clear_console
         clear_console()
         main()
     else :
         from main import start_application
         clear_console()
+        print("Back to main menu..")
         start_application()    
         
 
