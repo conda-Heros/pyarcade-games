@@ -7,6 +7,7 @@ import random
 import pyfiglet
 import os
 import string
+
 from pyarcade_games.save_data import save_data, retrive_value
 
 default_tries = 6
