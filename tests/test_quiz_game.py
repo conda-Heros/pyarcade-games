@@ -7,6 +7,7 @@ from assets.helpers import keys
 from pyarcade_games.quiz_game import *
 import builtins
 import difflib
+import pytest
 import sys
 
 example_app = create_example_fixture('assets/answers_mock.py')
@@ -81,7 +82,7 @@ def test_get_answers(example_app):
     example_app.write(keys.ENTER)
 
 
-# @pytest.mark.skip("todo")
+@pytest.mark.skip("todo")
 def test_main_method():
     diffs = diff(main(), path="assets/scenario/senario2.txt")
     assert not diffs, diffs
