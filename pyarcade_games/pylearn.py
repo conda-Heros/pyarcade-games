@@ -11,6 +11,11 @@ import sys
 import termios
 from colorama import Fore, Style
 
+def clear_console():
+    command = 'clear'
+    if os.name in ('nt', 'dos'):
+        command = 'cls'
+    os.system(command)
 
 def first_game_message():
     """
@@ -428,6 +433,7 @@ def before_user_start_game():
 
 
 def main():
+    clear_console()
     print(first_game_message())
     time.sleep(2)
     print(Fore.RESET + welcoming_picture_to_game()  )
