@@ -56,11 +56,11 @@ The Software requirements are mentioned with vision , scope , MVP and functional
 ![Domain Model](assets/domain_model.png)
 
 # References
-* Hangman CLI :[Link](https://codereview.stackexchange.com/questions/214471/display-command-line-hangman)
+* Hangman CLI :[Link](https://en.wikipedia.org/wiki/Hangman_(game))
 
-* Quiz Game CLI : [Link](https://northcoders.com/company/blog/how-do-you-make-a-command-line-quiz-generator)
+* Quiz Game CLI : [Link](https://en.wikipedia.org/wiki/Quiz)
 
-* Snake game : [link](https://www.edureka.co/blog/snake-game-with-pygame/)
+* Snake game : [link](https://en.wikipedia.org/wiki/Snake_(video_game_genre))
 
 # Technologies Used:
 * Python
