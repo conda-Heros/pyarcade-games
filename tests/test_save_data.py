@@ -14,7 +14,6 @@ def test_save_data():
     assert actual == expected
 
 
-
 def test_save_data_stromg():
     # Arrange
     save_data("dummy_string_variable", "I am a lovely string")
