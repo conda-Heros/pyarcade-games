@@ -51,4 +51,5 @@ def test_underscorify_word_with_num():
     # Actual
     actual = underscorify_word("co5ol")
     # Expected
+    print(actual)
     assert actual == expected
