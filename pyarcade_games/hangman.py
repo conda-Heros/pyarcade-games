@@ -219,4 +219,4 @@ def clear_console():
 
 
 if __name__ == "__main__":
-    start_hangman_game()
+    start_hangman_game(3,"test")
