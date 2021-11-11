@@ -58,7 +58,7 @@ def start_application():
         from pyarcade_games.pylearn import main
         main()
     elif answer == "View Scores":
-        from pyarcade_games.scores_menu import view_scores
+        from assets.scores_menu import view_scores
         view_scores()
     elif answer == "Quit":
         quit_game()

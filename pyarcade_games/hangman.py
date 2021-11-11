@@ -7,6 +7,7 @@ import random
 import pyfiglet
 import os
 import string
+import readchar
 from pyarcade_games.save_data import save_data, retrive_value
 default_tries = 6
 hangman_states = [
@@ -78,7 +79,7 @@ words_bank = []
 with open("assets/hangman_words.txt") as file:
     words_bank = file.readlines()
 
-def start_hangman_game(tries=default_tries, word=words_bank[random.randint(0,len(words_bank)-1)]):
+def start_hangman_game(tries=default_tries, word=words_bank[random.randint(0,len(words_bank)-1)],x=random.randint(1,2)):
     """Start Hangman Game
     Args:
         number of tries ([int]): [number of tries user has to guess the correct word]
@@ -88,6 +89,7 @@ def start_hangman_game(tries=default_tries, word=words_bank[random.randint(0,len
     """
     clear_console()
     number_of_tries = tries
+    word=word
     hangman_state = 0
     start_message = Fore.RED + Style.BRIGHT + pyfiglet.figlet_format("Hangman")
     print(start_message)
@@ -97,7 +99,7 @@ def start_hangman_game(tries=default_tries, word=words_bank[random.randint(0,len
     print(f"2: If you input a correct letter, the Hangman will stay in his current state without losing any of the tries you have.")
     print(f"3: If you input a wrong letter, then the hangman state will update and you will lose 1 try ")
     
-    random_num = random.randint(1,2)
+    random_num = x
     if random_num == 1:
       print(f"{Fore.RESET}Hint: the word ends with {word.strip()[-1]}")
     else:
@@ -105,7 +107,35 @@ def start_hangman_game(tries=default_tries, word=words_bank[random.randint(0,len
     modified_word = list(underscorify_word(word))
 
     while number_of_tries > 0:
-        if "".join(modified_word).strip() == word.strip():
+        if "".join(modified_word).strip() != word.strip():  
+          print(f"{Fore.RESET}Word is made of {len(word.strip())} letters")
+          print(" ","".join(modified_word))
+
+          user_input = input("Take a guess: ").lower()
+          while (len(user_input) != 1) or (user_input not in string.ascii_lowercase):
+            print(f"{Fore.RED}Please enter a single letter.{Fore.RESET}")
+            user_input = input("Take a guess: ").lower()
+          
+          if check_if_char_in_word(user_input,word):
+            for i, letter in enumerate(word):
+              if letter != "_" and user_input == letter:
+                modified_word[i] = letter
+          else:
+            number_of_tries -= 1
+            hangman_state += 1
+            if number_of_tries==0 :
+              clear_console()
+              fail_message = Fore.RED + Style.BRIGHT + pyfiglet.figlet_format("FAILED!")
+              print(fail_message)
+              print(f"{Fore.RESET}You ran out of tries {Fore.RED}{Style.BRIGHT}:({Fore.RESET}")
+              print(f"Correct word was {Fore.RED}{word.strip()}{Fore.RESET}")
+              print("------------------------------------------------")
+              print("------------------------------------------------")
+              replay_or_quit()
+              break
+          clear_console()
+          print(Fore.RESET + hangman_states[hangman_state])
+        elif "".join(modified_word).strip() == word.strip():
           clear_console()
           win_message = Fore.GREEN + Style.BRIGHT + pyfiglet.figlet_format("Congratz")
           print(win_message)
@@ -121,37 +151,7 @@ def start_hangman_game(tries=default_tries, word=words_bank[random.randint(0,len
           print(f"Score: Beaten the game with only {(tries-number_of_tries)+1} try(s)")
           print("------------------------------------------------")
           print("------------------------------------------------")
-          replay_or_quit()
-
-        
-        print(f"{Fore.RESET}Word is made of {len(word.strip())} letters")
-        print(" ","".join(modified_word))
-
-        user_input = input("Take a guess: ").lower()
-        while (len(user_input) != 1) or (user_input not in string.ascii_lowercase):
-          print(f"{Fore.RED}Please enter a single letter.{Fore.RESET}")
-          user_input = input("Take a guess: ").lower()
-        
-        if check_if_char_in_word(user_input,word):
-          for i, letter in enumerate(word):
-            if letter != "_" and user_input == letter:
-              modified_word[i] = letter
-        else:
-          number_of_tries -= 1
-          hangman_state += 1
-        clear_console()
-        print(Fore.RESET + hangman_states[hangman_state])
-
-    clear_console()
-    fail_message = Fore.RED + Style.BRIGHT + pyfiglet.figlet_format("FAILED!")
-    print(fail_message)
-    print(f"{Fore.RESET}You ran out of tries {Fore.RED}{Style.BRIGHT}:({Fore.RESET}")
-    print(f"Correct word was {Fore.RED}{word.strip()}{Fore.RESET}")
-    print("------------------------------------------------")
-    print("------------------------------------------------")
-    replay_or_quit()
-      
-          
+          break
 
 def replay_or_quit():
   """Prompts the user with input asking if they should play again or not.
@@ -160,14 +160,18 @@ def replay_or_quit():
   Returns:
     None
   """
-  _input = input("Would you like to play again ?(Y/N)").upper()
-  if _input == "Y":
+  print("Would you like to exit (e) or back to main menu (b) or play again (y) ?")
+  char=readchar.readchar()
+  
+  if char == "y":
     start_hangman_game(6,words_bank[random.randint(0,len(words_bank)-1)])
-    return
-  else:
+  elif char == "b":
     from main import start_application
-    clear_console()
     start_application()
+  elif char=="e":
+    os.system('exit')
+    
+    
 
 
 def check_if_char_in_word(char: str,word: str):
@@ -216,7 +220,3 @@ def clear_console():
     if os.name in ('nt', 'dos'):
         command = 'cls'
     os.system(command)
-
-
-if __name__ == "__main__":
-    start_hangman_game()
