@@ -27,13 +27,12 @@ The list of games that we will have in Py Arcade games will be :
 
 # Getting Started:
 
-Clone this repository to your local machine. [git@github.com: MusaabShalaldeh/automation.git]()
+Clone this repository to your local machine. [https://github.com/conda-Heros/pyarcade-games.git]()
 
 Then, install all required dependencies by typing:
 
 ```bash
-poetry install
-poetry shell
+python setup.py
 ```
 
 Load up the project using your favorite IDE.
@@ -57,11 +56,11 @@ The Software requirements are mentioned with vision , scope , MVP and functional
 ![Domain Model](assets/domain_model.png)
 
 # References
-* Hangman CLI :[Link](https://codereview.stackexchange.com/questions/214471/display-command-line-hangman)
+* Hangman CLI :[Link](https://en.wikipedia.org/wiki/Hangman_(game))
 
-* Quiz Game CLI : [Link](https://northcoders.com/company/blog/how-do-you-make-a-command-line-quiz-generator)
+* Quiz Game CLI : [Link](https://en.wikipedia.org/wiki/Quiz)
 
-* Snake game : [link](https://www.edureka.co/blog/snake-game-with-pygame/)
+* Snake game : [link](https://en.wikipedia.org/wiki/Snake_(video_game_genre))
 
 # Technologies Used:
 * Python
