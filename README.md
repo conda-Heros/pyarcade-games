@@ -1,7 +1,7 @@
 # **Team Members:** 
 * Musa'b Shalaldeh 
 * Ahmad Alrasheed
-* Jad Abu Awwad
+* Jehad Abu Awwad
 * Suzan Hiary
 # PyArcade Games(CLI Application)
 
